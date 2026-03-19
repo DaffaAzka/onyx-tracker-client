@@ -1,5 +1,6 @@
+import { Button } from "@/components/ui/button";
 import type { User } from "@/types/user";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 export async function clientLoader() {
   const stored = localStorage.getItem("user");
@@ -13,6 +14,9 @@ export default function Home() {
   return (
     <>
       <h1>Welcome Back {user?.name ?? "..."}</h1>
+      <Link to={"/habit"}>
+        <Button>Create Habit</Button>
+      </Link>
     </>
   );
 }

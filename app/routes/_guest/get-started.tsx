@@ -1,4 +1,4 @@
-import SignUpForm from "@/features/get-started/components/signUpForm";
+import SignUpForm from "@/features/get-started/components/SignUpForm";
 
 export default function GetStarted() {
   return (

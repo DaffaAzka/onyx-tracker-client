@@ -12,5 +12,8 @@ export default [
     route("/get-started", "routes/_guest/get-started.tsx"),
   ]),
 
-  layout("routes/_auth/layout.tsx", [route("/home", "routes/_auth/home.tsx")]),
+  layout("routes/_auth/layout.tsx", [
+    route("/home", "routes/_auth/home.tsx"),
+    route("/habit", "routes/_auth/habit.tsx"),
+  ]),
 ] satisfies RouteConfig;

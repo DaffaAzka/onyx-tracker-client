@@ -44,16 +44,18 @@ export default function DataTable() {
   return (
     <>
       <Card>
-        <Button
-          onClick={() => {
-            setActionModal({
-              action: Action.CREATE,
-              isOpen: true,
-            });
-          }}>
-          Create Habit
-        </Button>
-        <CardContent>
+        <CardContent className="flex flex-col gap-4">
+          <div className="flex flex-row justify-end">
+            <Button
+              onClick={() => {
+                setActionModal({
+                  action: Action.CREATE,
+                  isOpen: true,
+                });
+              }}>
+              Create Habit
+            </Button>
+          </div>
           {loading ?
             <SkeletonTable />
           : <Table>

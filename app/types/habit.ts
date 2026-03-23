@@ -7,3 +7,9 @@ export interface Habit {
   createdAt: string;
   isLog?: boolean;
 }
+
+export interface CreateBody {
+  name: string;
+  color: string;
+  icon: string;
+}

@@ -7,23 +7,23 @@ export default function useHabit() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        setLoading(true);
-        const res = await habitAPI.get();
-        setData(res);
-      } catch (err) {
-        const message =
-          err instanceof Error ? err.message : "Email or password invalid!";
-        setError(message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetch = async () => {
+    try {
+      setLoading(true);
+      const res = await habitAPI.get();
+      setData(res);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Email or password invalid!";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetch();
   }, []);
 
-  return {data, loading, error}
+  return { data, loading, error, refresh: fetch };
 }

@@ -8,4 +8,7 @@ export default defineConfig({
   ssr: {
     noExternal: ["lucide-react"],
   },
+  define: {
+    "import.meta.env.VITE_API_URL": JSON.stringify(process.env.VITE_API_URL),
+  },
 });

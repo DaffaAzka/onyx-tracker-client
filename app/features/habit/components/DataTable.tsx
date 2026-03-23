@@ -25,7 +25,7 @@ import ActionModal from "./ActionModal";
 import { Button } from "@/components/ui/button";
 
 export default function DataTable() {
-  const { data, loading, error } = useHabit();
+  const { data, loading, error, refresh } = useHabit();
   const [actionModal, setActionModal] = useState<{
     action: Action | null;
     isOpen: boolean;
@@ -69,20 +69,18 @@ export default function DataTable() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow>
                   {data.map((e, index) => {
                     return (
-                      <>
+                      <TableRow>
                         <TableCell>{index + 1}</TableCell>
                         <TableCell>
                           <DynamicIcon iconName={e.icon} />
                         </TableCell>
                         <TableCell>{e.name}</TableCell>
                         <TableCell>{e.color}</TableCell>
-                      </>
+                      </TableRow>
                     );
                   })}
-                </TableRow>
               </TableBody>
             </Table>
           }
@@ -92,7 +90,11 @@ export default function DataTable() {
         <ActionModal
           action={actionModal.action}
           isOpen={actionModal.isOpen}
-          isClose={closeActionModal}
+          onClose={closeActionModal}
+          onSuccess={() => {
+            refresh();
+            closeActionModal();
+          }}
         />
       )}
     </>

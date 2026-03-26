@@ -12,7 +12,11 @@ import useHabitLogCreate from "../hooks/useHabitLogCreate";
 import { StatusHabit } from "@/types/habit_log";
 import { DynamicIcon } from "@/components/blocks/dynamicIcon";
 
-export default function HabitList() {
+export default function HabitList({
+  calendarRefresh,
+}: {
+  calendarRefresh: () => void;
+}) {
   const { data, loading, error, refresh } = useHabitToday();
   const { create, loading: loadingCreate } = useHabitLogCreate();
 
@@ -38,6 +42,7 @@ export default function HabitList() {
                     },
                     () => {
                       refresh();
+                      calendarRefresh();
                     },
                   );
                 }}

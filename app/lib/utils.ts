@@ -1,3 +1,4 @@
+import type { HabitLog, HabitLogGroupedByDate } from "@/types/habit_log";
 import type { User } from "@/types/user";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -29,3 +30,16 @@ export function getDay() {
   const date = new Date();
   return date;
 }
+
+export const groupByDate = (logs: HabitLog[]): Record<string, number> => {
+  return logs.reduce(
+    (acc, log) => {
+      const date = log.date!.split("T")[0];
+      if (log.status === "DONE") {
+        acc[date] = (acc[date] ?? 0) + 1;
+      }
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
+};

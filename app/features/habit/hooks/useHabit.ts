@@ -14,7 +14,7 @@ export default function useHabit() {
       setData(res);
     } catch (err) {
       const message =
-        err instanceof Error ? err.message : "Email or password invalid!";
+        err instanceof Error ? err.message : "Failed fetching data!";
       setError(message);
     } finally {
       setLoading(false);

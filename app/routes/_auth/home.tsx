@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import HabitCard from "@/features/home/components/HabitCard";
 import type { User } from "@/types/user";
 import { Link, useLoaderData } from "react-router";
 
@@ -13,10 +14,12 @@ export default function Home() {
 
   return (
     <>
-      <h1>Welcome Back {user?.name ?? "..."}</h1>
-      <Link to={"/habit"}>
-        <Button>Create Habit</Button>
-      </Link>
+      <div className="grid grid-cols-1 lg:grid-cols-4">
+        <HabitCard />
+        <div className="lg:col-span-3">
+          
+        </div>
+      </div>
     </>
   );
 }

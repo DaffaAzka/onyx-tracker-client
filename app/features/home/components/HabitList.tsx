@@ -15,11 +15,13 @@ import { DynamicIcon } from "@/components/blocks/dynamicIcon";
 export default function HabitList({
   calendarRefresh,
   date,
+  habitToday,
 }: {
   calendarRefresh: () => void;
   date: string;
+  habitToday: ReturnType<typeof useHabitToday>;
 }) {
-  const { data, loading, error, refresh } = useHabitToday(date);
+  const { data, loading, error, refresh } = habitToday;
   const { create, loading: loadingCreate } = useHabitLogCreate();
 
   return (

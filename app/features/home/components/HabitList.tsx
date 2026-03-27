@@ -14,10 +14,12 @@ import { DynamicIcon } from "@/components/blocks/dynamicIcon";
 
 export default function HabitList({
   calendarRefresh,
+  date,
 }: {
   calendarRefresh: () => void;
+  date: string;
 }) {
-  const { data, loading, error, refresh } = useHabitToday();
+  const { data, loading, error, refresh } = useHabitToday(date);
   const { create, loading: loadingCreate } = useHabitLogCreate();
 
   return (
@@ -43,6 +45,7 @@ export default function HabitList({
                       {
                         habitId: e.id,
                         status: val ? StatusHabit.DONE : StatusHabit.SKIPPED,
+                        date,
                       },
                       () => {
                         refresh();

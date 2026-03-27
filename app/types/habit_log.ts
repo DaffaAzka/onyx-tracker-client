@@ -11,6 +11,7 @@ export interface HabitLogGroupedByDate {
 
 export interface CreateBody {
   habitId: string;
+  date: string;
   status: StatusHabit;
 }
 

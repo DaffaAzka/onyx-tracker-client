@@ -44,5 +44,13 @@ export const groupByDate = (logs: HabitLog[]): Record<string, number> => {
   );
 };
 
+export const getToday = () => {
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
 export const inRange = (n: number, min: number, max: number) => n >= min && n <= max;
 

@@ -7,8 +7,10 @@ export const habitAPI = {
     const response = await api.get<ApiListResponse<Habit>>("/habit");
     return response.data.data!;
   },
-  today: async (): Promise<Habit[]> => {
-    const response = await api.get<ApiListResponse<Habit>>("/habit/today");
+  today: async (date: string): Promise<Habit[]> => {
+    const response = await api.get<ApiListResponse<Habit>>(
+      `/habit/list/${date}`,
+    );
     return response.data.data!;
   },
   create: async (body: CreateBody): Promise<Habit> => {

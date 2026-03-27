@@ -3,7 +3,9 @@ import HabitCalendar from "@/features/home/components/HabitCalendar";
 import HabitCard from "@/features/home/components/HabitCard";
 import HabitList from "@/features/home/components/HabitList";
 import useHabitLog from "@/features/home/hooks/useHabitLog";
+import { getToday } from "@/lib/utils";
 import type { User } from "@/types/user";
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router";
 
 export async function clientLoader() {
@@ -15,6 +17,7 @@ export async function clientLoader() {
 export default function Home() {
   const { user } = useLoaderData<typeof clientLoader>();
   const habitLog = useHabitLog();
+  const [date, setDate] = useState(getToday());
 
   return (
     <>
@@ -25,7 +28,7 @@ export default function Home() {
         </div>
 
         <div className="lg:col-span-3">
-          <HabitList calendarRefresh={habitLog.refresh} />
+          <HabitList calendarRefresh={habitLog.refresh} date={date} />
         </div>
       </div>
     </>

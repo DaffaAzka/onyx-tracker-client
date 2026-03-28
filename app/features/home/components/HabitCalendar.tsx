@@ -44,30 +44,23 @@ export default function HabitCalendar({
         const e = toDateKey(date);
         onDayClick(e);
       }}
+      disabled={{ after: new Date() }}
       components={{
-        // Day: ({ day, ...props }: any) => {
-        //   const count = grouped[toDateKey(day?.date)] ?? 0;
-        //   const bg = count > 0 ? getBlue(count) : undefined;
-
-        //   return (
-        //     <button
-        //       {...props}
-        //       className={`${props.className ?? ""} rounded-md!`}
-        //       style={{ ...props.style, backgroundColor: bg }}
-        //     />
-        //   );
-        // },
-        DayButton: ({ day, className, ...props }: any) => {
+        DayButton: ({ day, className, modifiers, ...props }: any) => {
           const dateKey = toDateKey(day?.date);
           const count = grouped[dateKey] ?? 0;
-          const bg = count > 0 ? getBlue(count) : undefined;
+          const isSelected = modifiers?.selected;
+          const bg = !isSelected && count > 0 ? getBlue(count) : undefined;
+
+          const { style: _style, ...rest } = props;
 
           return (
             <CalendarDayButton
               day={day}
-              {...props}
+              modifiers={modifiers}
+              {...rest}
               className={cn(className, "rounded-md!")}
-              style={{ ...props.style, backgroundColor: bg }}
+              style={bg ? { backgroundColor: bg } : undefined}
             />
           );
         },

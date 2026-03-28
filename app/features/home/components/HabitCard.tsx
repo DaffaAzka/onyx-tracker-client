@@ -26,7 +26,7 @@ export default function HabitCard() {
           <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent rounded-md"></div>
           <div className="relative z-10">
             <h2 className="text-4xl font-semibold text-white">
-              Happy <br />{" "}
+              Happy <br />
               {day.toLocaleDateString("en-US", { weekday: "long" })}
             </h2>
             <p className="tracking-wider text-gray-100 text-sm">
@@ -40,9 +40,9 @@ export default function HabitCard() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <Button>
-            <Link to={`/habit`}>Browse Your Habits</Link>
-          </Button>
+          <Link to={`/habit`} className="w-full">
+            <Button className="w-full">Browse Your Habits</Button>
+          </Link>
         </div>
       </div>
     </>

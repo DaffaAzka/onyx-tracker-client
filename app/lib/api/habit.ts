@@ -17,4 +17,12 @@ export const habitAPI = {
     const response = await api.post<ApiResponse<Habit>>("/habit", body);
     return response.data.data!;
   },
+  update: async (id: string, body: CreateBody): Promise<Habit> => {
+    const response = await api.patch<ApiResponse<Habit>>(`habit/${id}`, body);
+    return response.data.data!;
+  },
+  destroy: async (id: string): Promise<Habit> => {
+    const response = await api.delete<ApiResponse<Habit>>(`habit/${id}`);
+    return response.data.data!;
+  },
 };

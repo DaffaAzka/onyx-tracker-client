@@ -2,15 +2,14 @@ import { habitAPI } from "@/lib/api/habit";
 import type { CreateBody } from "@/types/habit";
 import { useState } from "react";
 
-export default function useHabitCreate() {
+export default function useHabitDelete() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const create = async (data: CreateBody) => {
+  const destroy = async (id: string) => {
     try {
       setLoading(true);
-      setError(null);
-      const res = await habitAPI.create(data);
+      const res = await habitAPI.destroy(id);
       return res;
     } catch (err) {
       const message =
@@ -21,5 +20,5 @@ export default function useHabitCreate() {
     }
   };
 
-  return { loading, error, create };
+  return { loading, error, destroy };
 }

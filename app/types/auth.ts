@@ -1,22 +1,22 @@
-import type { User } from "./user";
+import type { User } from "./model";
 
-export interface SignInBody {
+export type SignInBody = {
   email: string;
   password: string;
-}
+};
 
-export interface SignInResponse {
+export type SignInResponse = {
   token: string;
   user: User;
-}
+};
 
-export interface SignUpBody {
+export type SignUpBody = {
   name: string;
   email: string;
   password: string;
   retry_password: string;
-}
+};
 
-export interface SignUpResponse {
+export type SignUpResponse = {
   user: User;
-}
+};

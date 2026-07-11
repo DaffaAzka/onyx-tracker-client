@@ -9,8 +9,11 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { NavigationProgress } from "./components/blocks/progressBar";
+import { NavigationProgress } from "./components/progress-bar";
 import { TooltipProvider } from "./components/ui/tooltip";
+import { useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AuthProvider } from "./contexts/auth";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -44,11 +47,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000,
+            retry: 1,
+          },
+        },
+      }),
+  );
+
   return (
-    <>
-      <NavigationProgress />
-      <Outlet />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <NavigationProgress />
+        <Outlet />
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
 

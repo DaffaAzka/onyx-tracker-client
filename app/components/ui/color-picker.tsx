@@ -2,9 +2,12 @@
 
 import { forwardRef, useMemo, useState } from "react";
 import { HexColorPicker } from "react-colorful";
-import { cn } from "@/lib/utils";
-import type { ButtonProps } from "@/components/ui/button";
+import type { VariantProps } from "class-variance-authority";
+import { buttonVariants } from "@/components/ui/button";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+type ButtonProps = React.ComponentProps<"button"> & VariantProps<typeof buttonVariants>;
 import {
   Popover,
   PopoverContent,
@@ -22,8 +25,7 @@ interface ColorPickerProps {
 const ColorPicker = forwardRef<
   HTMLInputElement,
   Omit<ButtonProps, "value" | "onChange" | "onBlur"> &
-    ColorPickerProps &
-    ButtonProps
+    ColorPickerProps
 >(
   (
     { disabled, value, onChange, onBlur, name, className, size, ...props },

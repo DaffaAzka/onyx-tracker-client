@@ -1,6 +1,6 @@
-import HabitCalendar from "@/features/home/components/habit-calendar";
-import HabitCard from "@/features/home/components/habit-card";
-import HabitList from "@/features/home/components/habit-list";
+import HabitCalendar from "@/features/home/habit-calendar";
+import HabitCard from "@/features/home/habit-card";
+import HabitList from "@/features/home/habit-list";
 import { useHabitLogs } from "@/hooks/habit-log";
 import { useHabitsToday } from "@/hooks/habit";
 import { getToday } from "@/utils/global";

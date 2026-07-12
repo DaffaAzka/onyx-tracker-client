@@ -1,4 +1,4 @@
-import DataTable from "@/features/habit/components/data-table";
+import DataTable from "@/features/habit/data-table";
 
 export default function Habit() {
   return (

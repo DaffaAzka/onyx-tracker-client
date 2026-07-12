@@ -121,13 +121,17 @@ export default function DataTable() {
       <ModalEdit
         isOpen={editModal.isOpen}
         data={editModal.data}
-        onOpenChange={(open) => setEditModal((prev) => ({ ...prev, isOpen: open }))}
+        onOpenChange={(open) =>
+          setEditModal((prev) => ({ ...prev, isOpen: open }))
+        }
       />
 
       <ModalDelete
         isOpen={deleteModal.isOpen}
         data={deleteModal.data}
-        onOpenChange={(open) => setDeleteModal((prev) => ({ ...prev, isOpen: open }))}
+        onOpenChange={(open) =>
+          setDeleteModal((prev) => ({ ...prev, isOpen: open }))
+        }
       />
     </>
   );
